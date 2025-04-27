@@ -5,184 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Defense Presentation Submission</title>
   <style>
-    /* Reset and base styles */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --primary-dark-purple: #231161;
-      --primary-medium-purple: #463077;
-      --primary-gold: #c99700;
-      --primary-light-gold: #e9d597;
-      --secondary-blue: #26547c;
-      --secondary-gray: #53565a;
-    }
-
-    body {
-      font-family: "Open Sans", Arial, sans-serif;
-      background-color: #f9fafb;
-      color: var(--secondary-gray);
-      line-height: 1.7;
-      padding: 20px;
-    }
-
-    /* Form container */
-    .submission-container {
-      max-width: 800px;
-      margin: 0 auto;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      padding: 25px;
-      border: 2px solid var(--primary-dark-purple);
-    }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: var(--primary-dark-purple);
-      font-size: 24px;
-    }
-
-    h2 {
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin-bottom: 20px;
-      border-bottom: 3px solid var(--primary-gold);
-      padding-bottom: 10px;
-      color: var(--primary-dark-purple);
-    }
-
-    /* Form styles */
-    .submission-form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-
-    label {
-      font-weight: 600;
-      color: var(--secondary-gray);
-    }
-
-    input,
-    textarea {
-      padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      font-family: inherit;
-    }
-
-    input:focus,
-    textarea:focus {
-      outline: none;
-      border-color: var(--primary-dark-purple);
-      box-shadow: 0 0 0 2px rgba(35, 17, 97, 0.2);
-    }
-
-    .required {
-      color: #e53e3e;
-    }
-
-    .error-message {
-      color: #e53e3e;
-      font-size: 14px;
-      height: 20px;
-    }
-
-    .file-info {
-      font-size: 14px;
-      color: #666;
-      margin-top: 5px;
-    }
-
-    .submit-button {
-      background-color: var(--primary-dark-purple);
-      color: white;
-      padding: 12px;
-      border: none;
-      border-radius: 4px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.2s;
-      margin-top: 10px;
-    }
-
-    .submit-button:hover {
-      background-color: var(--primary-medium-purple);
-    }
-
-    .submit-button:disabled {
-      background-color: #a0aec0;
-      cursor: not-allowed;
-    }
-
-    /* Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-    }
-
-    .modal-content {
-      background-color: white;
-      margin: 15% auto;
-      padding: 20px;
-      border-radius: 8px;
-      max-width: 500px;
-      position: relative;
-    }
-
-    .close-button {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      font-size: 24px;
-      cursor: pointer;
-    }
-
-    .alert-success {
-      background-color: #c6f6d5;
-      color: #22543d;
-      padding: 15px;
-      border-radius: 4px;
-    }
-
-    .alert-error {
-      background-color: #fed7d7;
-      color: #c53030;
-      padding: 15px;
-      border-radius: 4px;
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-      .submission-container {
-        padding: 15px;
-      }
-    }
+    /* Styling */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --primary-dark-purple: #231161; --primary-medium-purple: #463077; --primary-gold: #c99700; --primary-light-gold: #e9d597; --secondary-blue: #26547c; --secondary-gray: #53565a; }
+    body { font-family: "Open Sans", Arial, sans-serif; background-color: #f9fafb; color: var(--secondary-gray); line-height: 1.7; padding: 20px; }
+    .submission-container { max-width: 800px; margin: 0 auto; background: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 25px; border: 2px solid var(--primary-dark-purple); }
+    h1 { text-align: center; margin-bottom: 20px; color: var(--primary-dark-purple); font-size: 24px; }
+    h2 { font-size: 1.5rem; font-weight: bold; margin-bottom: 20px; border-bottom: 3px solid var(--primary-gold); padding-bottom: 10px; color: var(--primary-dark-purple); }
+    .submission-form { display: flex; flex-direction: column; gap: 15px; }
+    .form-group { display: flex; flex-direction: column; gap: 5px; }
+    label { font-weight: 600; color: var(--secondary-gray); }
+    input, textarea { padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-family: inherit; }
+    input:focus, textarea:focus { outline: none; border-color: var(--primary-dark-purple); box-shadow: 0 0 0 2px rgba(35,17,97,0.2); }
+    .required { color: #e53e3e; }
+    .submit-button { background-color: var(--primary-dark-purple); color: white; padding: 12px; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; margin-top: 10px; transition: background-color 0.2s; }
+    .submit-button:hover { background-color: var(--primary-medium-purple); }
+    .submit-button:disabled { background-color: #a0aec0; cursor: not-allowed; }
+    .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); }
+    .modal-content { background-color: white; margin: 15% auto; padding: 20px; border-radius: 8px; max-width: 500px; position: relative; }
+    .close-button { position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer; }
+    .alert-success { background-color: #c6f6d5; color: #22543d; padding: 15px; border-radius: 4px; }
+    .alert-error { background-color: #fed7d7; color: #c53030; padding: 15px; border-radius: 4px; }
+    @media (max-width: 768px) { .submission-container { padding: 15px; } }
   </style>
 </head>
+
 <body>
   <div class="submission-container">
     <h1>Defense Presentation Submission</h1>
-    
     <h2>Submit Your Defense Presentation</h2>
-    
+
     <form id="submission-form" class="submission-form">
       <div class="form-group">
         <label for="fullName">Full Name</label>
@@ -192,7 +44,7 @@
 
       <div class="form-group">
         <label for="email">School Email</label>
-        <input type="email" id="email" name="email" placeholder="student@sfsu.edu" required>
+        <input type="email" id="email" name="email" required>
         <div class="error-message" id="email-error"></div>
       </div>
 
@@ -209,22 +61,9 @@
       </div>
 
       <div class="form-group">
-        <label for="presentationFile">Presentation File (PPT/PDF) <span class="required">*</span></label>
-        <input type="file" id="presentationFile" name="presentationFile" accept=".ppt,.pptx,.pdf" required>
-        <div class="file-info" id="presentationFile-info"></div>
-        <div class="error-message" id="presentationFile-error"></div>
-      </div>
-
-      <div class="form-group">
-        <label for="paperFile">Project Paper (Optional)</label>
-        <input type="file" id="paperFile" name="paperFile" accept=".pdf,.doc,.docx">
-        <div class="file-info" id="paperFile-info"></div>
-      </div>
-
-      <div class="form-group">
-        <label for="logoFile">Logo (Optional)</label>
-        <input type="file" id="logoFile" name="logoFile" accept="image/*">
-        <div class="file-info" id="logoFile-info"></div>
+        <label for="presentationLink">Presentation Link (Google Drive / OneDrive / Dropbox) <span class="required">*</span></label>
+        <input type="url" id="presentationLink" name="presentationLink" placeholder="https://drive.google.com/..." required>
+        <div class="error-message" id="presentationLink-error"></div>
       </div>
 
       <div class="form-group">
@@ -244,177 +83,95 @@
   </div>
 
   <script>
-    // Configuration - CHANGE THIS URL TO YOUR VERCEL API ENDPOINT
-const API_URL = 'https://script.google.com/macros/s/AKfycbz453rlhrl4FScqFah3c8keZApt6pGZPWD5lVW5Hs--zERI6BukOt7Bisls3ZHChcJT/exec';
+    const API_URL = 'https://script.google.com/macros/s/AKfycbz453rlhrl4FScqFah3c8keZApt6pGZPWD5lVW5Hs--zERI6BukOt7Bisls3ZHChcJT/exec';
 
-    // DOM Elements
     const submissionForm = document.getElementById('submission-form');
     const submitButton = document.getElementById('submit-button');
     const alertModal = document.getElementById('alert-modal');
     const alertMessage = document.getElementById('alert-message');
     const closeButton = document.querySelector('.close-button');
 
-    // File input elements
-    const presentationFileInput = document.getElementById('presentationFile');
-    const paperFileInput = document.getElementById('paperFile');
-    const logoFileInput = document.getElementById('logoFile');
-
-    // File info elements
-    const presentationFileInfo = document.getElementById('presentationFile-info');
-    const paperFileInfo = document.getElementById('paperFile-info');
-    const logoFileInfo = document.getElementById('logoFile-info');
-
-    // Initialize the application
     document.addEventListener('DOMContentLoaded', () => {
-      // Initialize file input listeners
-      initFileInputs();
-      
-      // Initialize form submission
-      initFormSubmission();
-      
-      // Initialize modal close button
-      closeButton.addEventListener('click', () => {
-        alertModal.style.display = 'none';
-      });
-      
-      // Close modal when clicking outside
-      window.addEventListener('click', (event) => {
-        if (event.target === alertModal) {
-          alertModal.style.display = 'none';
-        }
-      });
-    });
+      closeButton.addEventListener('click', () => alertModal.style.display = 'none');
+      window.addEventListener('click', (e) => { if (e.target === alertModal) alertModal.style.display = 'none'; });
 
-    // Initialize file input listeners
-    function initFileInputs() {
-      presentationFileInput.addEventListener('change', (e) => {
-        if (e.target.files.length > 0) {
-          presentationFileInfo.textContent = `Selected: ${e.target.files[0].name}`;
-        } else {
-          presentationFileInfo.textContent = '';
-        }
-      });
-      
-      paperFileInput.addEventListener('change', (e) => {
-        if (e.target.files.length > 0) {
-          paperFileInfo.textContent = `Selected: ${e.target.files[0].name}`;
-        } else {
-          paperFileInfo.textContent = '';
-        }
-      });
-      
-      logoFileInput.addEventListener('change', (e) => {
-        if (e.target.files.length > 0) {
-          logoFileInfo.textContent = `Selected: ${e.target.files[0].name}`;
-        } else {
-          logoFileInfo.textContent = '';
-        }
-      });
-    }
-
-    // Initialize form submission
-    function initFormSubmission() {
       submissionForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
-        // Validate form
-        if (!validateForm()) {
-          return;
-        }
-        
-        // Disable submit button
+        if (!validateForm()) return;
+
         submitButton.disabled = true;
         submitButton.textContent = 'Submitting...';
-        
+
+        const formData = {
+          fullName: document.getElementById('fullName').value.trim(),
+          email: document.getElementById('email').value.trim(),
+          projectTitle: document.getElementById('projectTitle').value.trim(),
+          projectDescription: document.getElementById('projectDescription').value.trim(),
+          presentationLink: document.getElementById('presentationLink').value.trim(),
+          videoLink: document.getElementById('videoLink').value.trim(),
+        };
+
         try {
-          const formData = new FormData(submissionForm);
-          
-          // Send form data to server
-          const response = await fetch(`${API_URL}/submissions`, {
+          const response = await fetch(API_URL, {
             method: 'POST',
-            body: formData
+            body: JSON.stringify(formData),
+            headers: { 'Content-Type': 'application/json' }
           });
-          
+
           const result = await response.json();
-          
           if (result.success) {
-            // Show success message
-            showAlert(result.message, 'success');
-            
-            // Reset form
+            showAlert('Submission successful!', 'success');
             submissionForm.reset();
-            presentationFileInfo.textContent = '';
-            paperFileInfo.textContent = '';
-            logoFileInfo.textContent = '';
           } else {
-            // Show error message
-            showAlert(result.message, 'error');
+            showAlert('Submission failed. Please try again.', 'error');
           }
         } catch (error) {
           console.error('Error submitting form:', error);
-          showAlert('An error occurred. Please try again.', 'error');
+          showAlert('Error submitting form.', 'error');
         } finally {
-          // Re-enable submit button
           submitButton.disabled = false;
           submitButton.textContent = 'Submit Presentation';
         }
       });
-    }
+    });
 
-    // Validate form
     function validateForm() {
       let isValid = true;
-      
-      // Clear previous error messages
       document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
-      
-      // Validate full name
-      const fullName = document.getElementById('fullName').value.trim();
-      if (fullName.length < 2) {
+
+      if (document.getElementById('fullName').value.trim().length < 2) {
         document.getElementById('fullName-error').textContent = 'Name is required';
         isValid = false;
       }
-      
-      // Validate email
-      const email = document.getElementById('email').value.trim();
-      if (!email) {
-        document.getElementById('email-error').textContent = 'Email is required';
-        isValid = false;
-      } else if (!isValidEmail(email)) {
+      if (!isValidEmail(document.getElementById('email').value.trim())) {
         document.getElementById('email-error').textContent = 'Invalid email address';
         isValid = false;
       }
-      
-      // Validate project title
-      const projectTitle = document.getElementById('projectTitle').value.trim();
-      if (projectTitle.length < 2) {
+      if (document.getElementById('projectTitle').value.trim().length < 2) {
         document.getElementById('projectTitle-error').textContent = 'Project title is required';
         isValid = false;
       }
-      
-      // Validate project description
-      const projectDescription = document.getElementById('projectDescription').value.trim();
-      if (projectDescription.length < 10) {
-        document.getElementById('projectDescription-error').textContent = 'Please provide a description of at least 10 characters';
+      if (document.getElementById('projectDescription').value.trim().length < 10) {
+        document.getElementById('projectDescription-error').textContent = 'Provide a description (at least 10 characters)';
         isValid = false;
       }
-      
-      // Validate presentation file
-      if (!presentationFileInput.files || presentationFileInput.files.length === 0) {
-        document.getElementById('presentationFile-error').textContent = 'Presentation file is required';
+      if (!isValidUrl(document.getElementById('presentationLink').value.trim())) {
+        document.getElementById('presentationLink-error').textContent = 'Valid presentation link required';
         isValid = false;
       }
-      
       return isValid;
     }
 
-    // Check if email is valid
     function isValidEmail(email) {
       const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       return re.test(email);
     }
 
-    // Show alert modal
+    function isValidUrl(string) {
+      try { new URL(string); return true; }
+      catch (_) { return false; }
+    }
+
     function showAlert(message, type) {
       alertMessage.innerHTML = `<div class="alert-${type}">${message}</div>`;
       alertModal.style.display = 'block';
