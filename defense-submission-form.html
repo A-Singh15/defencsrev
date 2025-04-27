@@ -31,151 +31,151 @@
 </head>
 
 <body>
-  <div class="submission-container">
-    <h1>Defense Presentation Submission</h1>
-    <h2>Submit Your Defense Presentation</h2>
+<div class="submission-container">
+  <h1>Defense Presentation Submission</h1>
+  <h2>Submit Your Defense Presentation</h2>
 
-    <form id="submission-form" class="submission-form">
-      <div class="form-group">
-        <label for="fullName">Full Name</label>
-        <input type="text" id="fullName" name="fullName" required>
-        <div class="error-message" id="fullName-error"></div>
-      </div>
-
-      <div class="form-group">
-        <label for="email">School Email</label>
-        <input type="email" id="email" name="email" required>
-        <div class="error-message" id="email-error"></div>
-      </div>
-
-      <div class="form-group">
-        <label for="projectTitle">Project Title</label>
-        <input type="text" id="projectTitle" name="projectTitle" required>
-        <div class="error-message" id="projectTitle-error"></div>
-      </div>
-
-      <div class="form-group">
-        <label for="projectDescription">Project Description</label>
-        <textarea id="projectDescription" name="projectDescription" rows="4" required></textarea>
-        <div class="error-message" id="projectDescription-error"></div>
-      </div>
-
-      <div class="form-group">
-        <label for="presentationLink">Presentation Link (Google Drive / OneDrive / Dropbox) <span class="required">*</span></label>
-        <input type="url" id="presentationLink" name="presentationLink" placeholder="https://drive.google.com/..." required>
-        <div class="error-message" id="presentationLink-error"></div>
-      </div>
-
-      <div class="form-group">
-        <label for="videoLink">YouTube/Vimeo Video Link (Optional)</label>
-        <input type="url" id="videoLink" name="videoLink" placeholder="https://youtube.com/watch?v=...">
-      </div>
-
-      <button type="submit" id="submit-button" class="submit-button">Submit Presentation</button>
-    </form>
-  </div>
-
-  <div id="alert-modal" class="modal">
-    <div class="modal-content">
-      <span class="close-button">&times;</span>
-      <div id="alert-message"></div>
+  <form id="submission-form" class="submission-form">
+    <div class="form-group">
+      <label for="fullName">Full Name</label>
+      <input type="text" id="fullName" name="fullName" required>
+      <div class="error-message" id="fullName-error"></div>
     </div>
+
+    <div class="form-group">
+      <label for="email">School Email</label>
+      <input type="email" id="email" name="email" required>
+      <div class="error-message" id="email-error"></div>
+    </div>
+
+    <div class="form-group">
+      <label for="projectTitle">Project Title</label>
+      <input type="text" id="projectTitle" name="projectTitle" required>
+      <div class="error-message" id="projectTitle-error"></div>
+    </div>
+
+    <div class="form-group">
+      <label for="projectDescription">Project Description</label>
+      <textarea id="projectDescription" name="projectDescription" rows="4" required></textarea>
+      <div class="error-message" id="projectDescription-error"></div>
+    </div>
+
+    <div class="form-group">
+      <label for="presentationLink">Presentation Link (Google Drive / OneDrive / Dropbox) <span class="required">*</span></label>
+      <input type="url" id="presentationLink" name="presentationLink" placeholder="https://drive.google.com/..." required>
+      <div class="error-message" id="presentationLink-error"></div>
+    </div>
+
+    <div class="form-group">
+      <label for="videoLink">YouTube/Vimeo Video Link (Optional)</label>
+      <input type="url" id="videoLink" name="videoLink" placeholder="https://youtube.com/watch?v=...">
+    </div>
+
+    <button type="submit" id="submit-button" class="submit-button">Submit Presentation</button>
+  </form>
+</div>
+
+<div id="alert-modal" class="modal">
+  <div class="modal-content">
+    <span class="close-button">&times;</span>
+    <div id="alert-message"></div>
   </div>
+</div>
 
-  <script>
-    const API_URL = 'https://script.google.com/macros/s/AKfycbz453rlhrl4FScqFah3c8keZApt6pGZPWD5lVW5Hs--zERI6BukOt7Bisls3ZHChcJT/exec';
+<script>
+  const API_URL = 'https://script.google.com/macros/s/AKfycbz453rlhrl4FScqFah3c8keZApt6pGZPWD5lVW5Hs--zERI6BukOt7Bisls3ZHChcJT/exec';
 
-    const submissionForm = document.getElementById('submission-form');
-    const submitButton = document.getElementById('submit-button');
-    const alertModal = document.getElementById('alert-modal');
-    const alertMessage = document.getElementById('alert-message');
-    const closeButton = document.querySelector('.close-button');
+  const submissionForm = document.getElementById('submission-form');
+  const submitButton = document.getElementById('submit-button');
+  const alertModal = document.getElementById('alert-modal');
+  const alertMessage = document.getElementById('alert-message');
+  const closeButton = document.querySelector('.close-button');
 
-    document.addEventListener('DOMContentLoaded', () => {
-      closeButton.addEventListener('click', () => alertModal.style.display = 'none');
-      window.addEventListener('click', (e) => { if (e.target === alertModal) alertModal.style.display = 'none'; });
+  document.addEventListener('DOMContentLoaded', () => {
+    closeButton.addEventListener('click', () => alertModal.style.display = 'none');
+    window.addEventListener('click', (e) => { if (e.target === alertModal) alertModal.style.display = 'none'; });
 
-      submissionForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        if (!validateForm()) return;
+    submissionForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!validateForm()) return;
 
-        submitButton.disabled = true;
-        submitButton.textContent = 'Submitting...';
+      submitButton.disabled = true;
+      submitButton.textContent = 'Submitting...';
 
-        const formData = {
-          fullName: document.getElementById('fullName').value.trim(),
-          email: document.getElementById('email').value.trim(),
-          projectTitle: document.getElementById('projectTitle').value.trim(),
-          projectDescription: document.getElementById('projectDescription').value.trim(),
-          presentationLink: document.getElementById('presentationLink').value.trim(),
-          videoLink: document.getElementById('videoLink').value.trim(),
-        };
+      const formData = {
+        fullName: document.getElementById('fullName').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        projectTitle: document.getElementById('projectTitle').value.trim(),
+        projectDescription: document.getElementById('projectDescription').value.trim(),
+        presentationLink: document.getElementById('presentationLink').value.trim(),
+        videoLink: document.getElementById('videoLink').value.trim(),
+      };
 
-        try {
-          const response = await fetch(API_URL, {
-            method: 'POST',
-            body: JSON.stringify(formData),
-            headers: { 'Content-Type': 'application/json' }
-          });
+      try {
+        const response = await fetch(API_URL, {
+          method: 'POST',
+          body: JSON.stringify(formData),
+          headers: { 'Content-Type': 'application/json' }
+        });
 
-          const result = await response.json();
-          if (result.success) {
-            showAlert('Submission successful!', 'success');
-            submissionForm.reset();
-          } else {
-            showAlert('Submission failed. Please try again.', 'error');
-          }
-        } catch (error) {
-          console.error('Error submitting form:', error);
-          showAlert('Error submitting form.', 'error');
-        } finally {
-          submitButton.disabled = false;
-          submitButton.textContent = 'Submit Presentation';
+        const result = await response.json();
+        if (result.success) {
+          showAlert('Submission successful!', 'success');
+          submissionForm.reset();
+        } else {
+          showAlert('Submission failed. Please try again.', 'error');
         }
-      });
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        showAlert('Error submitting form.', 'error');
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Submit Presentation';
+      }
     });
+  });
 
-    function validateForm() {
-      let isValid = true;
-      document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
+  function validateForm() {
+    let isValid = true;
+    document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
 
-      if (document.getElementById('fullName').value.trim().length < 2) {
-        document.getElementById('fullName-error').textContent = 'Name is required';
-        isValid = false;
-      }
-      if (!isValidEmail(document.getElementById('email').value.trim())) {
-        document.getElementById('email-error').textContent = 'Invalid email address';
-        isValid = false;
-      }
-      if (document.getElementById('projectTitle').value.trim().length < 2) {
-        document.getElementById('projectTitle-error').textContent = 'Project title is required';
-        isValid = false;
-      }
-      if (document.getElementById('projectDescription').value.trim().length < 10) {
-        document.getElementById('projectDescription-error').textContent = 'Provide a description (at least 10 characters)';
-        isValid = false;
-      }
-      if (!isValidUrl(document.getElementById('presentationLink').value.trim())) {
-        document.getElementById('presentationLink-error').textContent = 'Valid presentation link required';
-        isValid = false;
-      }
-      return isValid;
+    if (document.getElementById('fullName').value.trim().length < 2) {
+      document.getElementById('fullName-error').textContent = 'Name is required';
+      isValid = false;
     }
-
-    function isValidEmail(email) {
-      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      return re.test(email);
+    if (!isValidEmail(document.getElementById('email').value.trim())) {
+      document.getElementById('email-error').textContent = 'Invalid email address';
+      isValid = false;
     }
-
-    function isValidUrl(string) {
-      try { new URL(string); return true; }
-      catch (_) { return false; }
+    if (document.getElementById('projectTitle').value.trim().length < 2) {
+      document.getElementById('projectTitle-error').textContent = 'Project title is required';
+      isValid = false;
     }
-
-    function showAlert(message, type) {
-      alertMessage.innerHTML = `<div class="alert-${type}">${message}</div>`;
-      alertModal.style.display = 'block';
+    if (document.getElementById('projectDescription').value.trim().length < 10) {
+      document.getElementById('projectDescription-error').textContent = 'Provide a description (at least 10 characters)';
+      isValid = false;
     }
-  </script>
+    if (!isValidUrl(document.getElementById('presentationLink').value.trim())) {
+      document.getElementById('presentationLink-error').textContent = 'Valid presentation link required';
+      isValid = false;
+    }
+    return isValid;
+  }
+
+  function isValidEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  }
+
+  function isValidUrl(string) {
+    try { new URL(string); return true; }
+    catch (_) { return false; }
+  }
+
+  function showAlert(message, type) {
+    alertMessage.innerHTML = `<div class="alert-${type}">${message}</div>`;
+    alertModal.style.display = 'block';
+  }
+</script>
 </body>
 </html>
